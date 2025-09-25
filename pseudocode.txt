@@ -13,7 +13,13 @@ then we need to locate where the decimal point is located:
 for i in num_string:
     s_num = str(i)
     if '.' in s_num:
-        print(s_num.index('.'))
+        n = s_num.index('.')
+        print(n)
+
+then if we know where the decimal place is, we can identify the values surrounding the decimal:
+s_num[n-1] = ones place
+s_num[n-2] = tens place
+s_num[n-3] = hundreds place
 
 * append zeros to the places we need 
 * comparisons of greater than or equal to or less than

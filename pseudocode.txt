@@ -11,8 +11,9 @@ num_string = [1.234, 2.345]
 
 then we need to locate where the decimal point is located:
 for i in num_string:
-    if '.' in num_string
-    return s_num.index('.')
+    s_num = str(i)
+    if '.' in s_num:
+        print(s_num.index('.'))
 
 * append zeros to the places we need 
 * comparisons of greater than or equal to or less than

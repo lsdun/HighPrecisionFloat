@@ -26,3 +26,8 @@ class HighPrecisionFloat:
         other = self._coerce(other)
         return HighPrecisionFloat(self.value + other.value, bits=max(self.bits, other.bits))
 
+# Testing the addition function:
+a = HighPrecisionFloat(1234567890.09876543210987654321, bits=256)
+b = HighPrecisionFloat(9876543210.01234567890987654321, bits=256)
+c = a + b
+print(f"a + b = {c}")

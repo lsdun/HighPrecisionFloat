@@ -1,5 +1,8 @@
 # Authors: Luke Matzner, Lauren Sdun, Julia Baumgarten
 
+from decimal import Decimal, localcontext
+from typing import Union
+
 NumberLike = Union[int, float, str, "HighPrecisionFloat"]
 
 def bits_to_decimal_digits(bits: int) -> int:

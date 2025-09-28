@@ -1,4 +1,4 @@
-Group: Lauren Sdun, Julia Jones, Luke Matzner, Julia Baumgarten
+Group: Lauren Sdun, Luke Matzner, Julia Baumgarten
 
 create an empty list for each decimal place
 tenths = []

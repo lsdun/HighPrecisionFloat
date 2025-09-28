@@ -22,3 +22,7 @@ class HighPrecisionFloat:
     def _coerce(self, other: NumberLike) -> "HighPrecisionFloat":
         return other if isinstance(other, HighPrecisionFloat) else HighPrecisionFloat(other, bits=self.bits)
 
+    def __add__(self, other: NumberLike) -> "HighPrecisionFloat":
+        other = self._coerce(other)
+        return HighPrecisionFloat(self.value + other.value, bits=max(self.bits, other.bits))
+

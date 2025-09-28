@@ -11,7 +11,7 @@ def bits_to_decimal_digits(bits: int) -> int:
 
 class HighPrecisionFloat:
     """High-precision float backed by Decimal +, -, *, /"""
-  __slots__ = ("value", "bits")
+      __slots__ = ("value", "bits")
 
     def __init__(self, x: NumberLike, bits: int = 128):
         self.bits = int(bits)

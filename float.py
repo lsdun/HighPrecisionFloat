@@ -19,3 +19,6 @@ class HighPrecisionFloat:
             else:
                 self.value = Decimal(str(x))
 
+    def _coerce(self, other: NumberLike) -> "HighPrecisionFloat":
+        return other if isinstance(other, HighPrecisionFloat) else HighPrecisionFloat(other, bits=self.bits)
+

@@ -10,12 +10,12 @@ class HighPrecisionFloat:
     """High-precision float backed by Decimal +, -, *, /"""
   __slots__ = ("value", "bits")
 
-def __init__(self, x: NumberLike, bits: int = 128):
-    self.bits = int(bits)
-    with localcontext() as ctx:
-        ctx.prec = bits_to_decimal_digits(self.bits)
-        if isinstance(x, HighPrecisionFloat):
-            self.value = Decimal(x.value)
-        else:
-            self.value = Decimal(str(x))
+    def __init__(self, x: NumberLike, bits: int = 128):
+        self.bits = int(bits)
+        with localcontext() as ctx:
+            ctx.prec = bits_to_decimal_digits(self.bits)
+            if isinstance(x, HighPrecisionFloat):
+                self.value = Decimal(x.value)
+            else:
+                self.value = Decimal(str(x))
 

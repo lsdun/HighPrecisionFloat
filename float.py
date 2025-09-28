@@ -1,4 +1,4 @@
-Authors: Luke Matzner, Julia Jones, Lauren Sdun, Julia Baumgarten
+Authors: Luke Matzner, Lauren Sdun, Julia Baumgarten
 
 NumberLike = Union[int, float, str, "HighPrecisionFloat"]
 

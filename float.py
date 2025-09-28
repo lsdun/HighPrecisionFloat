@@ -1,7 +1,8 @@
 # Authors: Luke Matzner, Lauren Sdun, Julia Baumgarten
 
 from decimal import Decimal, localcontext
-from typing import Union
+from typing import Union, Any
+from contextlib import contextmanager
 
 NumberLike = Union[int, float, str, "HighPrecisionFloat"]
 
@@ -22,12 +23,20 @@ class HighPrecisionFloat:
             else:
                 self.value = Decimal(str(x))
 
+    @contextmanager
+    def _ctx(self, other: Any = None):
+        use_bits = self.bits if not isinstance(other, HighPrecisionFloat) else max(self.bits, other.bits)
+        with localcontext() as ctx:
+            ctx.prec = bits_to_decimal_digits(use_bits)
+            yield
+
     def _coerce(self, other: NumberLike) -> "HighPrecisionFloat":
         return other if isinstance(other, HighPrecisionFloat) else HighPrecisionFloat(other, bits=self.bits)
 
     def __add__(self, other: NumberLike) -> "HighPrecisionFloat":
         other = self._coerce(other)
-        return HighPrecisionFloat(self.value + other.value, bits=max(self.bits, other.bits))
+        with self._ctx(other):
+            return HighPrecisionFloat(self.value + other.value, bits=max(self.bits, other.bits))
 
 # Testing the addition function:
 a = HighPrecisionFloat(1234567890.09876543210987654321, bits=256)

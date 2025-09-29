@@ -67,7 +67,11 @@ class HighPrecisionFloat:
             if self.value < other.value: return True
             else: return False
 
-    def __lt__(self, other): return self._cmp(other) < 0
+    def __eq__(self, other: NumberLike) -> bool:
+        other = self._ccoerce(other)
+        with self._ctx(other):
+            if self.value == other.value: return True
+            else: return False
 
     def __str__(self) -> str:
         return str(self.value)

@@ -57,4 +57,4 @@ print(f"a + b = {c}")
 d = HighPrecisionFloat(1234567890.09876543210987654321, bits=256)
 e = HighPrecisionFloat(9876543210.01234567890987654321, bits=256)
 f = d - e
-print(f"a - b = {c}")
+print(f"d - e = {c}")

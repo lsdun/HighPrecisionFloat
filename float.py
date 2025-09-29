@@ -50,6 +50,8 @@ class HighPrecisionFloat:
 
     def __truediv__(self, other: NumberLike) -> "HighPrecisionFloat":
         other = self._coerce(other)
+        if other.value == 0:
+            raise ZeroDivisionError("error")
         with self._ctx(other):
             return HighPrecisionFloat(self.value / other.value, bits=max(self.bits, other.bits))
 

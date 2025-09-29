@@ -43,12 +43,12 @@ class HighPrecisionFloat:
         with self._ctx(other):
             return HighPrecisionFloat(self.value - other.value, bits=max(self.bits, other.bits))
 
-    def __mult__(self, other: NumberLike) -> "HighPrecisionFloat":
+    def __mul__(self, other: NumberLike) -> "HighPrecisionFloat":
         other = self._coerce(other)
         with self._ctx(other):
             return HighPrecisionFloat(self.value * other.value, bits=max(self.bits, other.bits))
 
-    def __div__(self, other: NumberLike) -> "HighPrecisionFloat":
+    def __truediv__(self, other: NumberLike) -> "HighPrecisionFloat":
         other = self._coerce(other)
         with self._ctx(other):
             return HighPrecisionFloat(self.value / other.value, bits=max(self.bits, other.bits))

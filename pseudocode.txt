@@ -19,3 +19,7 @@ This will keep our inputs as the HighPrecision variable type.
 
 We can then redefine addition, subtraction, division, multiply, greater than, equal to, and less than. 
 Using the coerce function, we can make sure the other number being acted on with said operation.
+
+We also had to add in a str definition to apply to our results to make our printed out values readable to humans.
+
+With this, we should be able to do all above operations with a higher precision. 

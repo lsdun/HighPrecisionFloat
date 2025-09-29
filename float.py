@@ -105,5 +105,5 @@ hp_x = HighPrecisionFloat(str(x), bits=128)
 """Taylor expansion up to x^2/2 term"""
 hp_val = (hp_x * hp_x) / HighPrecisionFloat("2.0", bits=128)
 
-print("Standard float64:", float_val)
-print("HighPrecisionFloat:", hp_val)
+print("Standard float64:", float_val) # Expected to be 0
+print("HighPrecisionFloat:", hp_val) # Expected to be a very small number

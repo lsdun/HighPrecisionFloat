@@ -1,25 +1,21 @@
 Group: Lauren Sdun, Luke Matzner, Julia Baumgarten
 
-create an empty list for each decimal place
-tenths = []
-hundredths = []
-thousandths = []
-etc...
+Make a class called HighPrecision that you can use to set the number of bits used to give us a higher precision than normal. 
+We can do this with bits_to_digits:
 
-we have two numbers:
-num_string = [1.234, 2.345]
+def bits_to_decimal_digits(bits: int) -> int:
+   ...:     """Digits approximately bits * log10(2) approximately bits * 0.30103 and subtract 1 for safety"""
+   ...:     return max(1, int(bits * 0.30102999566) - 1)
+This will let us set the number of bits used by raising it to the maximum bit number for a number.
 
-then we need to locate where the decimal point is located:
-for i in num_string:
-    s_num = str(i)
-    if '.' in s_num:
-        n = s_num.index('.')
-        print(n)
+We also need to account for the input 'rounding down' the number initially. So we'll use a @contextmanager for that.
+    @contextmanager
+    def _ctx(self, other: Any = None):
+        use_bits = self.bits if not isinstance(other, HighPrecisionFloat) else max(self.bits, other.bits)
+        with localcontext() as ctx:
+            ctx.prec = bits_to_decimal_digits(use_bits)
+            yield
+This will keep our inputs as the HighPrecision variable type.
 
-then if we know where the decimal place is, we can identify the values surrounding the decimal:
-s_num[n-1] = ones place
-s_num[n-2] = tens place
-s_num[n-3] = hundreds place
-
-* append zeros to the places we need 
-* comparisons of greater than or equal to or less than
+We can then redefine addition, subtraction, division, multiply, greater than, equal to, and less than. 
+Using the coerce function, we can make sure the other number being acted on with said operation.

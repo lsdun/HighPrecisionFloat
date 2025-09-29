@@ -23,3 +23,12 @@ Using the coerce function, we can make sure the other number being acted on with
 We also had to add in a str definition to apply to our results to make our printed out values readable to humans.
 
 With this, we should be able to do all above operations with a higher precision. 
+
+To demonstrate the numerical precision is a limiting factor:
+
+We define a very small x value. Using the built-in cosine function, we compute 1-cos(x) for this very small x. 
+
+Then using the high-precision arithmetic, we can approximate 1-cos(x) using Taylor expansion:
+1 - cos(x) = x^2 / 2 for small x.
+
+Then we can compare the results and see that the built-in cosine function will round the output to 0.

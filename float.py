@@ -43,9 +43,18 @@ class HighPrecisionFloat:
         with self._ctx(other):
             return HighPrecisionFloat(self.value - other.value, bits=max(self.bits, other.bits))
 
+    def __mult__(self, other: NumberLike) -> "HighPrecisionFloat":
+        other = self._coerce(other)
+        with self._ctx(other):
+            return HighPrecisionFloat(self.value * other.value, bits=max(self.bits, other.bits))
+
+    def __div__(self, other: NumberLike) -> "HighPrecisionFloat":
+        other = self._coerce(other)
+        with self._ctx(other):
+            return HighPrecisionFloat(self.value / other.value, bits=max(self.bits, other.bits))
+
     def __str__(self) -> str:
         return str(self.value)
-
 
 # Testing the addition function:
 a = HighPrecisionFloat(1234567890.09876543210987654321, bits=256)
@@ -54,7 +63,13 @@ c = a + b
 print(f"a + b = {c}")
 
 # Testing the subtraction function:
-d = HighPrecisionFloat(1234567890.09876543210987654321, bits=256)
-e = HighPrecisionFloat(9876543210.01234567890987654321, bits=256)
-f = d - e
-print(f"d - e = {c}")
+f = a - b
+print(f"a - b = {f}")
+
+# Testing the multiplication function:
+g = a * b
+print(f"a * b = {g}")
+
+# Testing the division function:
+h = a / b
+print(f"a / b = {h}")

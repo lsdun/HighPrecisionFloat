@@ -55,7 +55,7 @@ class HighPrecisionFloat:
         with self._ctx(other):
             return HighPrecisionFloat(self.value / other.value, bits=max(self.bits, other.bits))
 
-      def _cmp(self, other: NumberLike) -> int:
+    def _cmp(self, other: NumberLike) -> int:
         other = self._coerce(other)
         with self._ctx(other):
             if self.value < other.value: return -1

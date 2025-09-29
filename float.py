@@ -52,3 +52,9 @@ a = HighPrecisionFloat(1234567890.09876543210987654321, bits=256)
 b = HighPrecisionFloat(9876543210.01234567890987654321, bits=256)
 c = a + b
 print(f"a + b = {c}")
+
+# Testing the subtraction function:
+d = HighPrecisionFloat(1234567890.09876543210987654321, bits=256)
+e = HighPrecisionFloat(9876543210.01234567890987654321, bits=256)
+f = d - e
+print(f"a - b = {c}")
